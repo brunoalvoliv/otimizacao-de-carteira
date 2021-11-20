@@ -42,7 +42,7 @@ for carteiras in range(quantidade_de_carteiras):
     pesos = np.round(pesos / pesos.sum(), 3)
     carteira_pesos.append(pesos)
     #Retorno anualizado
-    retorno_anual =  np.sum(retornos * pesos) * 252
+    retorno_anual =  np.sum(retornos.mean() * pesos) * 252
     carteira_retornos.append(retorno_anual)
     #Matriz de covariância e risco da carteira
     matriz_cov =  retornos.cov() * 252
@@ -53,4 +53,6 @@ for carteiras in range(quantidade_de_carteiras):
     sharpe = (retorno_anual + ativo_livre_de_risco) / carteira_desvipadrao
     sharpe_ratios.append(sharpe)
 
-print(carteira_retornos)
+carteira_retornos = np.array(carteira_retornos)
+carteira_riscos = np.array(carteira_riscos)
+sharpe_ratios = np.array(sharpe_ratios)
