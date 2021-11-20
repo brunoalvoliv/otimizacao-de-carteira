@@ -39,7 +39,7 @@ carteira_pesos = []
 for carteiras in range(quantidade_de_carteiras):
     #Definindo os pesos
     pesos = np.random.random_sample(len(tickers))
-    pesos = np.round(pesos / pesos.sum(), 3)
+    pesos = np.round((pesos / np.sum(pesos)), 3)
     carteira_pesos.append(pesos)
     #Retorno anualizado
     retorno_anual =  np.sum(retornos.mean() * pesos) * 252
@@ -55,4 +55,28 @@ for carteiras in range(quantidade_de_carteiras):
 
 carteira_retornos = np.array(carteira_retornos)
 carteira_riscos = np.array(carteira_riscos)
+carteira_pesos = np.array(carteira_pesos)
 sharpe_ratios = np.array(sharpe_ratios)
+
+carteira_metricas = [carteira_retornos, carteira_riscos, sharpe_ratios, carteira_pesos]
+carteiras_df = pd.DataFrame(carteira_metricas).T
+carteiras_df.columns = ['Retornos', 'Riscos', 'Índices de Sharpe', 'Pesos']
+
+minimo_risco = carteiras_df.iloc[carteiras_df['Riscos'].astype(float).idxmin()]
+maximo_retorno = carteiras_df.iloc[carteiras_df['Retornos'].astype(float).idxmax()]
+maximmo_sharpe = carteiras_df.iloc[carteiras_df['Índices de Sharpe'].astype(float).idxmax()]
+
+print('Carteira de mínimo risco')
+print(minimo_risco)
+print(tickers)
+print('')
+
+print('Carteira de máximo retorno')
+print(maximo_retorno)
+print(tickers)
+print('')
+
+print('Carteira de máximo Índice de Sharpe')
+print(minimo_risco)
+print(tickers)
+print('')
