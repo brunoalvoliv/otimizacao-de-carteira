@@ -81,8 +81,8 @@ print(maximo_sharpe)
 print(tickers)
 print('')
 
-
 #Visualização
+
 plt.figure(figsize=(12, 6));
 plt.title('Otimização de carteira', fontsize=25);
 plt.scatter(carteira_riscos, carteira_retornos, c = carteira_retornos / carteira_riscos);
