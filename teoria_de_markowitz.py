@@ -6,13 +6,14 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 import datetime as dt
 
+#np.set_printoptions(threshold=13)
 plt.style.use('ggplot')
 
 #Importando dados das empresas
 
-tickers = 'ITUB4.SA MGLU3.SA SMFT3.SA XPBR31.SA WEGE3.SA'.split()
+tickers = 'PETR3.SA MGLU3.SA ITSA4.SA RDOR3.SA LCAM3.SA BTCR11.SA CSAN3.SA SMFT3.SA ARZZ3.SA TRPL3.SA B3SA3.SA WEGE3.SA'.split()
 inicio = dt.datetime(2019, 1, 1)
-fim = dt.datetime(2021, 11, 23)
+fim = dt.datetime(2021, 11, 30)
 
 #Inputs para criar as carteiras
 
@@ -68,16 +69,19 @@ maximo_sharpe = carteiras_df.iloc[carteiras_df['Índice de Sharpe'].astype(float
 
 print('Carteira de mínimo risco')
 print(minimo_risco)
+print(minimo_risco.Peso[:12])
 print(tickers)
 print('')
 
 print('Carteira de máximo retorno')
 print(maximo_retorno)
+print(maximo_retorno.Peso[:12])
 print(tickers)
 print('')
 
 print('Carteira de máximo Índice de Sharpe')
 print(maximo_sharpe)
+print(maximo_sharpe.Peso[:12])
 print(tickers)
 print('')
 

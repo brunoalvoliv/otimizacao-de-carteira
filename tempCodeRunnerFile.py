@@ -1,0 +1,1 @@
+print(carteira_pesos.T)
